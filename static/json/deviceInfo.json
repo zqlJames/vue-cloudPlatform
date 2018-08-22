@@ -1,0 +1,22 @@
+[
+	{
+		"devName": "C1办公室",
+        "id": 1,
+        "image": "/static/imgs/c1.jpeg"
+	},
+	{
+		"devName": "C2客厅",
+		"id": 2,
+        "image": "/static/imgs/c2.jpeg"
+    },
+    {
+		"devName": "64路NVR",
+		"id": 3,
+        "image": "/static/imgs/64nvr.jpeg"
+    },
+    {
+		"devName": "书房",
+		"id": 4,
+        "image": "/static/imgs/f1.jpg"
+	}
+]

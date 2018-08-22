@@ -1,0 +1,102 @@
+body,div,ol,ul,li,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select,header,section,footer,main {
+    margin:0;
+    padding:0;
+    -moz-box-sizing: border-box;  
+    -webkit-box-sizing: border-box; 
+    -o-box-sizing: border-box; 
+    -ms-box-sizing: border-box; 
+    box-sizing: border-box; 
+}   
+body {
+    font-family: "微软雅黑", "Microsoft YaHei", "Arial Narrow";
+    background: #fff;
+    color: #606266;
+}
+
+html,
+body {
+    height: 100%;
+    font-size: 12px;
+}
+
+a {
+    color: #2d374b;
+    text-decoration: none
+}
+
+em {
+    font-style: normal
+}
+
+li {
+    list-style: none
+}
+
+img {
+    border: 0;
+    vertical-align: middle
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+p {
+    word-wrap: break-word
+}
+
+/* 修改 ElementUI 默认样式 start */
+/* 清除低分辨率下element-ui弹窗遮罩滚动条 */
+.el-dialog__wrapper {
+    overflow: hidden!important;
+}
+
+/* element-ui路由激活状态背景颜色 */
+.el-menu-item.is-active {
+    background-color: #ecf5ff!important;
+}
+#app-content .el-menu-item.is-active {
+    border-right: 2px solid #409eef
+}
+.el-message {
+    /* top: 40%!important */
+    border: none!important;
+    background-color: rgba(0, 0, 0, .8)!important;
+}
+
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
+::-webkit-scrollbar {  
+    width: 8px;  
+    height: 8px;  
+    background-color: #F5F5F5;  
+}  
+  
+/*定义滚动条轨道 内阴影+圆角*/  
+::-webkit-scrollbar-track {  
+    -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0);  
+    border-radius: 8px;  
+    background-color: #F5F5F5;  
+}  
+  
+/*定义滑块 内阴影+圆角*/  
+::-webkit-scrollbar-thumb {  
+    border-radius: 8px;  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
+    background-color: #666;  
+}
+
+/* 滚动条样式 兼容IE */
+div, ul {
+    /*三角箭头的颜色*/
+    scrollbar-arrow-color: #666;
+    /*滚动条滑块按钮的颜色*/
+    scrollbar-face-color: #666;
+    /*滚动条整体颜色*/
+    scrollbar-highlight-color: #666;
+    /*滚动条阴影*/
+    scrollbar-shadow-color: #F5F5F5;
+    /*滚动条轨道颜色*/
+    scrollbar-track-color: #F5F5F5;
+}

@@ -1,0 +1,85 @@
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.clearfix {
+    overflow: hidden;
+}
+.mc {
+    margin: 0 auto!important;
+}
+.tc {
+    text-align: center
+}
+
+/* 间距 */
+.pt5 {
+    padding-top: 5px;
+}
+.pr5 {
+    padding-right: 5px;
+}
+.pb5 {
+    padding-bottom: 5px;
+}
+.pl5 {
+    padding-left: 5px;
+}
+.mt5 {
+    margin-top: 5px;
+}
+.mr5 {
+    margin-right: 5px;
+}
+.mb5 {
+    margin-bottom: 5px;
+}
+.ml10 {
+    margin-left: 10px;
+}
+.mt10 {
+    margin-top: 10px;
+}
+.mr10 {
+    margin-right: 10px;
+}
+.mb10 {
+    margin-bottom: 10px;
+}
+.ml10 {
+    margin-left: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 鼠标悬停手指 */
+.pointer {
+    cursor: pointer;
+}
+
+/* 绝对定位垂直居中（父元素需设置定位） */
+.verCenter {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* a标签样式 */
+.link {
+    display: inline-block;
+    color: #409eff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.link:hover {
+    color: #409ecc
+}
+
+/* 上色 */
+.mainColor {
+    color: #409eff;
+}
