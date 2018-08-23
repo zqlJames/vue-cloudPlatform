@@ -223,7 +223,7 @@
 import timeRangePicker from './timeRangePicker.vue'
 import timeRangeResultBox from './timeRangeResultBox.vue'
 import countDown from '../../common/countDown.vue'
-import modifyPwd from './modifyPassword.vue'
+import modifyPwd from './modifyPasswordDialog.vue'
 export default {
   name: 'DeviceInfo',
   components: {

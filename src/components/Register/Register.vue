@@ -6,15 +6,20 @@
               <h3>立方云平台注册</h3>
           </div>
           <el-tabs v-model="activeName" class="register-main">
-              <el-tab-pane label="手机验证码注册" name="1" class="phoneRegister">
+              <el-tab-pane label="手机注册" name="1" class="phoneRegister">
                   <div class="username input-item">
                       <el-input type="text" maxlength="11" :disabled="isRegistering" @keyup.enter.native="handleRegister" placeholder="请输入手机号"></el-input>
                       <countDown :time="60" class="getCodeBtn" :disabled="isRegistering"></countDown>
                       <div class="warn" v-show="userWarn">手机号格式不正确！</div>
                   </div>
                   <div class="pwd input-item">
-                      <el-input type="password" maxlength="6" :disabled="isRegistering" @keyup.enter.native="handleRegister" placeholder="请输入验证码"></el-input>
+                      <el-input type="text" maxlength="6" :disabled="isRegistering" @keyup.enter.native="handleRegister" placeholder="请输入验证码"></el-input>
                       <div class="warn" v-show="pwdWarn">验证码错误！</div>
+                  </div>
+                  <div class="pwd input-item">
+                      <el-input type="password" maxlength="12" :disabled="isRegistering" @keyup.enter.native="handleRegister" placeholder="请输入密码"></el-input>
+                      <div class="warn" v-show="pwdWarn">密码格式错误！</div>
+                      <div class="info"><span class="el-icon-info"></span> 密码长度6~12位，数字，大小写英文字母任意组合</div>
                   </div>
                   <el-button @click="handleRegister"
                     :disabled="isRegistering"
@@ -26,7 +31,7 @@
           </el-tabs>
           <div class="register">
               已注册账号？
-              <router-link to="/Login"><span class="registerLink">点击立即登录</span></router-link>
+              <router-link to="/login"><span class="registerLink">立即登录</span></router-link>
           </div>
       </div>
   </div>
@@ -150,8 +155,14 @@ export default {
 .warn {
     color: #fc5b5b;
     position: absolute;
-    bottom: -20px;
+    bottom: -16px;
     left: 5px;
+}
+.info {
+    color: #aaa;
+    position: absolute;
+    top: -17px;
+    left: 2px;
 }
 
 .third {

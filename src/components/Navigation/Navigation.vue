@@ -1,10 +1,10 @@
 <template>
     <div id="app-navigation">
         <el-menu :default-active="activePath" router class="el-menu" mode="horizontal">
-            <el-menu-item index="/MyCubeCloud" class="el-menu-item">{{$t('nav.myCubeCloud')}}</el-menu-item>
-            <el-menu-item index="/Videos" class="el-menu-item">{{$t('nav.videos')}}</el-menu-item>
-            <el-menu-item index="/Message" class="el-menu-item">{{$t('nav.message')}}</el-menu-item>
-            <el-menu-item index="/Config" class="el-menu-item">{{$t('nav.config')}}</el-menu-item>
+            <el-menu-item index="/myCubeCloud" class="el-menu-item">{{$t('nav.myCubeCloud')}}</el-menu-item>
+            <el-menu-item index="/videos" class="el-menu-item">{{$t('nav.videos')}}</el-menu-item>
+            <el-menu-item index="/message" class="el-menu-item">{{$t('nav.message')}}</el-menu-item>
+            <el-menu-item index="/config" class="el-menu-item">{{$t('nav.config')}}</el-menu-item>
         </el-menu>
     </div>
 </template>
@@ -19,12 +19,12 @@ export default {
   watch: {
     $route (to, from) {
       let path = to.path
-      if (path.indexOf('/Videos') === 0) {
-        this.activePath = '/Videos'
-      } else if (path.indexOf('/Message') === 0) {
-        this.activePath = '/Message'
-      } else if (path.indexOf('/Config') === 0) {
-        this.activePath = '/Config'
+      if (path.indexOf('/videos') === 0) {
+        this.activePath = '/videos'
+      } else if (path.indexOf('/message') === 0) {
+        this.activePath = '/message'
+      } else if (path.indexOf('/config') === 0) {
+        this.activePath = '/config'
       } else {
         this.activePath = to.path
         console.log(this.activePath)

@@ -2,7 +2,7 @@
   <div id="home">
       <div id="home-header">
         <div class="home-head-in mc">
-            <router-link to="/Home" class="home-logo fl">
+            <router-link to="/home" class="home-logo fl">
               <img src="../../static/logo-cc.png" class="home-logo-img">
             </router-link>
             <Nav class="home-nav fl"></Nav>

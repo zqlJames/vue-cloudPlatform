@@ -6,10 +6,10 @@
                     class="el-menu-vertical-demo videos-nav-contain"
                     theme="dark"
                     router>
-              <el-menu-item index="/Videos/LiveVideos" class="videos-nav-item">{{$t('liveVideos.liveVideos')}}</el-menu-item>
-              <el-menu-item index="/Videos/LocalPhotos" class="videos-nav-item">{{$t('localPhotos.localPhotos')}}</el-menu-item>
-              <el-menu-item index="/Videos/CloudPic" class="videos-nav-item">{{$t('cloudPicture.cloudPicture')}}</el-menu-item>
-              <el-menu-item index="/Videos" class="videos-nav-item"><a href="http://square.ys7.com/index" target="_blank">{{$t('videoSquare.videoSquare')}}</a> </el-menu-item>
+              <el-menu-item index="/videos/liveVideos" class="videos-nav-item">{{$t('liveVideos.liveVideos')}}</el-menu-item>
+              <el-menu-item index="/videos/localPhotos" class="videos-nav-item">{{$t('localPhotos.localPhotos')}}</el-menu-item>
+              <el-menu-item index="/videos/cloudPic" class="videos-nav-item">{{$t('cloudPicture.cloudPicture')}}</el-menu-item>
+              <el-menu-item index="/videos" class="videos-nav-item"><a href="http://square.ys7.com/index" target="_blank">{{$t('videoSquare.videoSquare')}}</a> </el-menu-item>
             </el-menu>
         </div>
         <!-- 主体 -->

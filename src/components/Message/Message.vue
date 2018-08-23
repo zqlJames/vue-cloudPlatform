@@ -6,10 +6,10 @@
                     class="el-menu-vertical-demo message-nav-contain"
                     theme="dark"
                     router>
-              <el-menu-item index="/Message/EventMsg" class="message-nav-item">事件消息</el-menu-item>
-              <el-menu-item index="/Message/LeaveMsg" class="message-nav-item">留言消息</el-menu-item>
-              <el-menu-item index="/Message/SystemMsg" class="message-nav-item">系统消息</el-menu-item>
-              <el-menu-item index="/Message/Daily" class="message-nav-item">日报</el-menu-item>
+              <el-menu-item index="/message/eventMsg" class="message-nav-item">事件消息</el-menu-item>
+              <el-menu-item index="/message/leaveMsg" class="message-nav-item">留言消息</el-menu-item>
+              <el-menu-item index="/message/systemMsg" class="message-nav-item">系统消息</el-menu-item>
+              <el-menu-item index="/message/daily" class="message-nav-item">日报</el-menu-item>
             </el-menu>
         </div>
         <!-- 主体 -->

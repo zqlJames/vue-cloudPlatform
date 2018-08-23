@@ -32,105 +32,105 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/Login'
+      redirect: '/login'
     },
     {
-      path: '/Login',
+      path: '/login',
       name: 'Login',
       component: Login
     },
     {
-      path: '/Register',
+      path: '/register',
       name: 'Register',
       component: Register
     },
     {
-      path: '/Home',
+      path: '/home',
       name: 'Home',
       component: Home,
-      redirect: '/MyCubeCloud',
+      redirect: '/myCubeCloud',
       children: [{
-        path: '/MyCubeCloud',
+        path: '/myCubeCloud',
         name: 'MyCubeCloud',
         component: MyCubeCloud
       },
       {
-        path: '/Videos',
+        path: '/videos',
         name: 'Videos',
         component: Videos,
-        redirect: '/Videos/LiveVideos',
+        redirect: '/videos/liveVideos',
         children: [{
-          path: 'LiveVideos',
+          path: 'liveVideos',
           name: 'LiveVideos',
           component: LiveVideos
         }, {
-          path: 'LocalPhotos',
+          path: 'localPhotos',
           name: 'LocalPhotos',
           component: LocalPhotos
         }, {
-          path: 'CloudPic',
+          path: 'cloudPic',
           name: 'CloudPic',
           component: CloudPic
         }]
       },
       {
-        path: '/Message',
-        name: 'Message',
+        path: '/message',
+        name: 'message',
         component: Message,
-        redirect: '/Message/EventMsg',
+        redirect: '/message/eventMsg',
         children: [{
-          path: 'EventMsg',
+          path: 'eventMsg',
           name: 'EventMsg',
           component: EventMsg
         }, {
-          path: 'LeaveMsg',
+          path: 'leaveMsg',
           name: 'LeaveMsg',
           component: LeaveMsg
         }, {
-          path: 'SystemMsg',
+          path: 'systemMsg',
           name: 'SystemMsg',
           component: SystemMsg
         }, {
-          path: 'Daily',
+          path: 'daily',
           name: 'Daily',
           component: Daily
         }]
       },
       {
-        path: '/Config',
+        path: '/config',
         name: 'Config',
         component: Config,
-        redirect: '/Config/DeviceCfg',
+        redirect: '/config/deviceCfg',
         children: [{
-          path: 'DeviceCfg',
+          path: 'deviceCfg',
           name: 'DeviceCfg',
           component: DeviceCfg
         }, {
-          path: 'DeviceCfg/:id',
+          path: 'deviceCfg/:id',
           name: 'DeviceInfo',
           component: DeviceInfo
         }, {
-          path: 'GuideAddDevice',
+          path: 'guideAddDevice',
           name: 'GuideAddDevice',
           component: GuideAddDevice
         }, {
-          path: 'DeviceDomainCfg',
+          path: 'deviceDomainCfg',
           name: 'DeviceDomainCfg',
           component: DeviceDomainCfg
         }, {
-          path: 'GroupCfg',
+          path: 'groupCfg',
           name: 'GroupCfg',
           component: GroupCfg
         }, {
-          path: 'UserInfoCfg',
+          path: 'userInfoCfg',
           name: 'UserInfoCfg',
           component: UserInfoCfg
         }, {
-          path: 'TerminalBindingCfg',
+          path: 'terminalBindingCfg',
           name: 'TerminalBindingCfg',
           component: TerminalBindingCfg
         }, {
-          path: 'LocalCfg',
+          path: 'localCfg',
           name: 'LocalCfg',
           component: LocalCfg
         }]

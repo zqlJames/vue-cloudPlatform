@@ -43,7 +43,7 @@
           </el-tabs>
           <div class="register">
               还未注册账号？
-              <router-link to="/Register"><span class="registerLink">点击注册</span></router-link>
+              <router-link to="/register"><span class="registerLink">点击注册</span></router-link>
           </div>
           <div class="third">
               <div class="third-line tc">
@@ -90,8 +90,8 @@ export default {
       setTimeout(() => {
         this.isLogining = false
         this.loginBtnTxt = '登录'
-        // this.$router.push('Home')
-      }, 2000)
+        this.$router.push('/config/userInfoCfg')
+      }, 1000)
       this.userWarn = !this.userWarn
       this.pwdWarn = !this.pwdWarn
     }
@@ -141,7 +141,7 @@ export default {
     margin-left: -250px;
     margin-top: -250px;
     background: rgba(0, 0, 0, .7);
-    border: 1px solid #555
+    border: 1px solid #555;
 }
 .login-title {
     font-size: 22px;

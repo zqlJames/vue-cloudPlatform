@@ -6,12 +6,12 @@
                     class="el-menu-vertical-demo config-nav-contain"
                     theme="dark"
                     router>
-              <el-menu-item index="/Config/DeviceCfg" class="config-nav-item">设备管理</el-menu-item>
-              <el-menu-item index="/Config/DeviceDomainCfg" class="config-nav-item">设备域名管理</el-menu-item>
-              <el-menu-item index="/Config/GroupCfg" class="config-nav-item">群组管理</el-menu-item>
-              <el-menu-item index="/Config/UserInfoCfg" class="config-nav-item">用户信息管理</el-menu-item>
-              <el-menu-item index="/Config/TerminalBindingCfg" class="config-nav-item">终端绑定管理</el-menu-item>
-              <el-menu-item index="/Config/LocalCfg" class="config-nav-item">本地设置</el-menu-item>
+              <el-menu-item index="/config/deviceCfg" class="config-nav-item">设备管理</el-menu-item>
+              <el-menu-item index="/config/deviceDomainCfg" class="config-nav-item">设备域名管理</el-menu-item>
+              <el-menu-item index="/config/groupCfg" class="config-nav-item">群组管理</el-menu-item>
+              <el-menu-item index="/config/userInfoCfg" class="config-nav-item">用户信息管理</el-menu-item>
+              <el-menu-item index="/config/terminalBindingCfg" class="config-nav-item">终端绑定管理</el-menu-item>
+              <el-menu-item index="/config/localCfg" class="config-nav-item">本地设置</el-menu-item>
             </el-menu>
         </div>
         <!-- 主体 -->
@@ -31,14 +31,14 @@ export default {
   watch: {
     $route (to, from) {
       let path = to.path
-      if (path.indexOf('DeviceCfg') > 0) this.activePath = '/Config/DeviceCfg'
+      if (path.indexOf('deviceCfg') > 0) this.activePath = '/config/deviceCfg'
     }
   },
   created () {
     // 刷新设备详情页时设备管理导航不高亮的问题
     let path = this.$route.path
-    if (path.indexOf('DeviceCfg') > 0) {
-      this.activePath = '/Config/DeviceCfg'
+    if (path.indexOf('deviceCfg') > 0) {
+      this.activePath = '/config/deviceCfg'
     }
   }
 }

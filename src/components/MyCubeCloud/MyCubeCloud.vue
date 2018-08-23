@@ -9,7 +9,7 @@
                 <p class="mycubecloud-header-nav-sign">--"美好的一天，从关爱自己与家人开始。"</p>
                 <ul class="mycubecloud-header-nav-main">
                     <li class="mycubecloud-header-nav-item">
-                        <router-link to="/Videos/LiveVideos">
+                        <router-link to="/videos/liveVideos">
                             <div class="mycubecloud-header-nav-icon">
                                 <span class="el-icon-caret-right"></span>
                             </div>
@@ -17,7 +17,7 @@
                         </router-link>
                     </li>
                     <li class="mycubecloud-header-nav-item">
-                        <router-link to="/Videos/LocalPhotos">
+                        <router-link to="/videos/localPhotos">
                             <div class="mycubecloud-header-nav-icon">
                                 <span class="el-icon-picture"></span>
                             </div>
@@ -49,7 +49,7 @@
                         </router-link>
                     </li>
                     <li class="mycubecloud-header-nav-item">
-                        <router-link to="/Config/DeviceDomainCfg">
+                        <router-link to="/config/deviceDomainCfg">
                             <div class="mycubecloud-header-nav-icon">
                                 <span class="el-icon-setting"></span>
                             </div>
