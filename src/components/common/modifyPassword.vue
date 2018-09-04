@@ -7,7 +7,7 @@
                 size="small"
                 v-model="pwdData.old"
                 id="old"
-                :class="{'input': true, 'warnBorder': isWarnData.old, 'rightBorder': isRightData.old}"
+                :class="{'input': true, 'warnBorder': isWarnData.old, 'success': isRightData.old}"
                 @blur="oldPwdBlur"></el-input>
                 <p :class="{'warning': true,
                             'warning-top': warnPlace === 'top',
@@ -24,7 +24,7 @@
             <el-input type="password"
                 size="small"
                 v-model="pwdData.new" id="new"
-                :class="{'input': true, 'warnBorder': isWarnData.new, 'rightBorder': isRightData.new}"
+                :class="{'input': true, 'warnBorder': isWarnData.new, 'success': isRightData.new}"
                 @blur="newPwdBlur"></el-input>
                 <p :class="{'warning': true,
                             'warning-top': warnPlace === 'top',
@@ -42,7 +42,7 @@
                 size="small"
                 v-model="pwdData.confirm"
                 id="newConfirm"
-                :class="{'input': true, 'warnBorder': isWarnData.confirm, 'rightBorder': isRightData.confirm}"
+                :class="{'input': true, 'warnBorder': isWarnData.confirm, 'success': isRightData.confirm}"
                 @blur="confirmPwdBlur"></el-input>
                 <p :class="{'warning': true,
                             'warning-top': warnPlace === 'top',
@@ -219,14 +219,9 @@ export default {
 }
 </style>
 <style>
-.modifyPassword .warnBorder .el-input__inner,
-.modifyPassword .warnBorder .el-input__inner:hover,
-.modifyPassword .warnBorder .el-input__inner:focus {
-  border-color: red;
-}
-.modifyPassword .rightBorder .el-input__inner,
-.modifyPassword .rightBorder .el-input__inner:hover,
-.modifyPassword .rightBorder .el-input__inner:focus {
+.modifyPassword .success .el-input__inner,
+.modifyPassword .success .el-input__inner:hover,
+.modifyPassword .success .el-input__inner:focus {
   border-color: #67c500;
 }
 </style>

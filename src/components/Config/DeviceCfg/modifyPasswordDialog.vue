@@ -239,15 +239,3 @@ export default {
   color: #67c500;
 }
 </style>
-<style>
-#modifyPwd .warnBorder .el-input__inner,
-#modifyPwd .warnBorder .el-input__inner:hover,
-#modifyPwd .warnBorder .el-input__inner:focus {
-  border-color: red;
-}
-#modifyPwd .rightBorder .el-input__inner,
-#modifyPwd .rightBorder .el-input__inner:hover,
-#modifyPwd .rightBorder .el-input__inner:focus {
-  border-color: #67c500;
-}
-</style>

@@ -376,7 +376,6 @@ export default {
      * 尝试用element-ui自带过滤方法，此路暂时不通，需研究element组件源码
      */
     filterDate (val, row) {
-      debugger
       const {start, end} = this.filterDateObj
       let targetDate = new Date(row.date).getTime()
       if (start && end) {

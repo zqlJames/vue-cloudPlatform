@@ -83,3 +83,17 @@
 .mainColor {
     color: #409eff;
 }
+
+/* el-input输入提示边框 */
+.warnBorder .el-input__inner,
+.warnBorder .el-input__inner:hover,
+.warnBorder .el-input__inner:focus {
+    /* 错误提示 */
+    border-color: #fc5b5b;
+}
+.success .el-input__inner,
+.success .el-input__inner:hover,
+.success .el-input__inner:focus {
+    /* 正确提示 */
+    border-color: #67c500;
+}

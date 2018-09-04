@@ -24,7 +24,27 @@ module.exports = {
               target: 'https://api.douban.com',
               pathRewrite: {'^/douban': '/'},
               changeOrigin: true
-            }
+            },
+//             '/api': {
+//               target: 'http://10.10.7.11:8080',
+//               pathRewrite: {'^/api': '/'},
+//               changeOrigin: true
+//             },
+            '/mobileApi': {
+              target: 'http://10.10.8.75:5555',
+              pathRewrite: {'^/mobileApi': '/'},
+              changeOrigin: true
+            },
+            '/api': {
+              target: 'http://10.10.7.11:9002',
+              pathRewrite: {'^/api': '/'},
+              changeOrigin: true
+            },
+            '/upload': {
+              target: 'http://10.10.8.75:9002',
+              pathRewrite: {'^/upload': '/'},
+              changeOrigin: true
+            }
          },
 
     // Use Eslint Loader?

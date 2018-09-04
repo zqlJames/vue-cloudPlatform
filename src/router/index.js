@@ -3,7 +3,8 @@ import Router from 'vue-router'
 
 const Login = resolve => require(['@/components/Login/Login.vue'], resolve)
 const Register = resolve => require(['@/components/Register/Register.vue'], resolve)
-const Home = resolve => require(['@/components/Home.vue'], resolve)
+const ResetPassword = resolve => require(['@/components/ResetPassword/ResetPwd.vue'], resolve)
+const Home = resolve => require(['@/components/Home/Home.vue'], resolve)
 const MyCubeCloud = resolve => require(['@/components/MyCubeCloud/MyCubeCloud.vue'], resolve)
 
 const Videos = resolve => require(['@/components/Videos/Videos.vue'], resolve)
@@ -23,7 +24,7 @@ const DeviceInfo = resolve => require(['@/components/Config/DeviceCfg/DeviceInfo
 const GuideAddDevice = resolve => require(['@/components/Config/DeviceCfg/guideAddDevice.vue'], resolve)
 const DeviceDomainCfg = resolve => require(['@/components/Config/DeviceDomainCfg/DeviceDomainCfg.vue'], resolve)
 const GroupCfg = resolve => require(['@/components/Config/GroupCfg.vue'], resolve)
-const UserInfoCfg = resolve => require(['@/components/Config/UserInfoCfg.vue'], resolve)
+const UserInfoCfg = resolve => require(['@/components/Config/UserInfoCfg/UserInfoCfg.vue'], resolve)
 const TerminalBindingCfg = resolve => require(['@/components/Config/TerminalBindingCfg.vue'], resolve)
 const LocalCfg = resolve => require(['@/components/Config/LocalCfg.vue'], resolve)
 
@@ -43,6 +44,11 @@ export default new Router({
       path: '/register',
       name: 'Register',
       component: Register
+    },
+    {
+      path: '/resetPassword',
+      name: 'ResetPwd',
+      component: ResetPassword
     },
     {
       path: '/home',

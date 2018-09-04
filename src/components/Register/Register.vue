@@ -1,45 +1,85 @@
 <template>
-  <div id="register">
-      <img src="../../../static/imgs/register-bg.jpg" class="login-bg">
-      <div class="register-wrap">
-          <div class="register-title">
-              <h3>立方云平台注册</h3>
-          </div>
-          <el-tabs v-model="activeName" class="register-main">
-              <el-tab-pane label="手机注册" name="1" class="phoneRegister">
-                  <div class="username input-item">
-                      <el-input type="text" maxlength="11" :disabled="isRegistering" @keyup.enter.native="handleRegister" placeholder="请输入手机号"></el-input>
-                      <countDown :time="60" class="getCodeBtn" :disabled="isRegistering"></countDown>
-                      <div class="warn" v-show="userWarn">手机号格式不正确！</div>
-                  </div>
-                  <div class="pwd input-item">
-                      <el-input type="text" maxlength="6" :disabled="isRegistering" @keyup.enter.native="handleRegister" placeholder="请输入验证码"></el-input>
-                      <div class="warn" v-show="pwdWarn">验证码错误！</div>
-                  </div>
-                  <div class="pwd input-item">
-                      <el-input type="password" maxlength="12" :disabled="isRegistering" @keyup.enter.native="handleRegister" placeholder="请输入密码"></el-input>
-                      <div class="warn" v-show="pwdWarn">密码格式错误！</div>
-                      <div class="info"><span class="el-icon-info"></span> 密码长度6~12位，数字，大小写英文字母任意组合</div>
-                  </div>
-                  <el-button @click="handleRegister"
-                    :disabled="isRegistering"
-                    :icon="isRegistering ? 'el-icon-loading' : ''"
-                    class="registerBtn">
-                    {{registerBtnTxt}}
-                  </el-button>
-              </el-tab-pane>
-          </el-tabs>
-          <div class="register">
-              已注册账号？
-              <router-link to="/login"><span class="registerLink">立即登录</span></router-link>
-          </div>
-      </div>
-  </div>
+    <div id="register">
+        <img src="../../../static/imgs/register-bg.jpg" class="register-bg">
+        <div class="register-wrap">
+            <h3 class="register-title">立方云平台注册</h3>
+            <el-tabs v-model="activeName" class="register-main">
+                <el-tab-pane label="手机注册" name="1" class="phoneRegister">
+                    <div class="username input-item">
+                        <el-input type="text" maxlength="11"
+                            :class="{'warnBorder': phone.warnInfo}"
+                            :disabled="isRegistering"
+                            @keyup.enter.native="handleRegister"
+                            placeholder="请输入手机号"
+                            v-model="phone.input"
+                            @blur="phoneBlur">
+                        </el-input>
+                        <div class="warn" v-show="phone.warnInfo"><span class="el-icon-error"></span> {{phone.warnInfo}}</div>
+                    </div>
+                    <div class="verifyCode input-item">
+                        <el-input type="text" maxlength="6"
+                            :class="{'warnBorder': verifyCode.warnInfo}"
+                            :disabled="isRegistering"
+                            @keyup.enter.native="handleRegister"
+                            placeholder="请输入验证码"
+                            v-model="verifyCode.input"
+                            @blur="verifyCodeBlur">
+                        </el-input>
+                        <countDown :time="60" class="getCodeBtn" ref="sendSmsBtn" @click="sendSMS" :disabled="isRegistering"></countDown>
+                        <div class="warn" v-show="verifyCode.warnInfo"><span class="el-icon-error"></span> {{verifyCode.warnInfo}}</div>
+                    </div>
+                    <div class="pwd input-item">
+                        <el-input type="password" maxlength="16"
+                            :class="{'warnBorder': password.warnInfo}"
+                            :disabled="isRegistering"
+                            @keyup.enter.native="handleRegister"
+                            placeholder="请输入密码"
+                            v-model="password.input"
+                            @blur="passwordBlur">
+                        </el-input>
+                        <div class="warn" v-show="password.warnInfo"><span class="el-icon-error"></span> {{password.warnInfo}}</div>
+                        <div class="info"><span class="el-icon-info"></span> 密码长度8~16位，必须包含数字和英文字母，不能含其他字符</div>
+                        <div class="el-icon-success" v-show="password.success"></div>
+                    </div>
+                    <div class="pwdAgain input-item">
+                        <el-input type="password" maxlength="16"
+                            :class="{'warnBorder': pwdAgain.warnInfo}"
+                            :disabled="isRegistering"
+                            @keyup.enter.native="handleRegister"
+                            placeholder="请再次输入密码"
+                            v-model="pwdAgain.input"
+                            @blur="pwdAgainBlur">
+                        </el-input>
+                        <div class="warn" v-show="pwdAgain.warnInfo"><span class="el-icon-error"></span> {{pwdAgain.warnInfo}}</div>
+                        <div class="el-icon-success" v-show="pwdAgain.success"></div>
+                    </div>
+                    <el-button @click="handleRegister"
+                        :disabled="isRegistering"
+                        :icon="isRegistering ? 'el-icon-loading' : ''"
+                        class="registerBtn">
+                        {{registerBtnTxt}}
+                    </el-button>
+                </el-tab-pane>
+            </el-tabs>
+            <div class="toLoginPage-wrap">
+                已注册账号？
+                <router-link to="/login"><span class="linkToLogin">立即登录</span></router-link>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
-import '../../iconfont/iconfont.css'
+// import '../../iconfont/iconfont.css'
 import countDown from '../common/countDown.vue'
+
+// 手机号校验
+const PHONE_REG = /^1[3|4|5|8][0-9]\d{8}$/
+// 密码校验, 长度8~16位，包含数字和大小写字母
+const PWD_REG = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/
+// 验证码校验
+const VERIFY_REG = /^\d{6}$/
+
 export default {
   name: 'Register',
   components: {
@@ -48,28 +88,172 @@ export default {
   data () {
     return {
       activeName: '1',
-      userWarn: false,
-      pwdWarn: false,
       isRegistering: false,
-      registerBtnTxt: '注册'
+      registerBtnTxt: '注册',
+      phone: { // 用户输入的手机号
+        input: '',
+        warnInfo: ''
+      },
+      verifyCode: { // 用户输入的验证码
+        input: '',
+        warnInfo: ''
+      },
+      password: { // 用户输入的密码
+        input: '',
+        warnInfo: '',
+        success: false
+      },
+      pwdAgain: { // 用户再次输入的密码
+        input: '',
+        warnInfo: '',
+        success: false
+      }
     }
   },
   created () {
   },
+  watch: {
+    'password.warnInfo' (val) {
+      this.password.success = !val
+    },
+    'pwdAgain.warnInfo' (val) {
+      this.pwdAgain.success = !val
+    }
+  },
   methods: {
+    /**
+     * 手机号输入框失焦验证
+     */
+    phoneBlur () {
+      /* eslint-disable */
+      let str = this.phone.input
+      // 未填
+      if (!str) {
+        this.phone.warnInfo = '手机号不能为空！'
+      }
+      // 格式错误
+      else if (!PHONE_REG.test(str)) {
+        this.phone.warnInfo = '手机号码格式有误！'
+      }
+      // 验证通过
+      else {
+        this.phone.warnInfo = ''
+      }
+    },
+    
+    /**
+     * 验证码输入框失焦验证
+     */
+    verifyCodeBlur () {
+      /* eslint-disable */
+      let str = this.verifyCode.input
+      // 未填
+      if (!str) {
+        this.verifyCode.warnInfo = '验证码不能为空！'
+      }
+      // 格式错误
+      else if (!VERIFY_REG.test(str)) {
+        this.verifyCode.warnInfo = '验证码格式有误！'
+      }
+      // 验证通过
+      else {
+        this.verifyCode.warnInfo = ''
+      }
+    },
+    
+    /**
+     * 密码输入框失焦验证
+     */
+    passwordBlur () {
+      /* eslint-disable */
+      let str = this.password.input
+      // 未填
+      if (!str) {
+        this.password.warnInfo = '密码不能为空！'
+      }
+      // 格式错误
+      else if (!PWD_REG.test(str)) {
+        this.password.warnInfo = '密码格式有误！'
+      }
+      // 验证通过
+      else {
+        this.password.warnInfo = ''
+        this.password.success = true
+      }
+    },
+    
+    /**
+     * 再次输入密码输入框失焦验证
+     */
+    pwdAgainBlur () {
+      /* eslint-disable */
+      let str = this.pwdAgain.input
+      // 未填
+      if (!str) {
+        this.pwdAgain.warnInfo = '密码不能为空！'
+      }
+      // 格式错误
+      else if (!PWD_REG.test(str)) {
+        this.pwdAgain.warnInfo = '密码格式有误！'
+      }
+      // 两次输入的密码不一致
+      else if (this.password.input && str !== this.password.input) {
+        this.pwdAgain.warnInfo = '两次输入的密码不一致！'
+      }
+      // 验证通过
+      else {
+        this.pwdAgain.warnInfo = ''
+        this.pwdAgain.success = true
+      }
+    },
+
     /*
-     * 选择语言时触发
+     * 点击获取验证码按钮时触发
+     */
+    sendSMS () {
+      this.phoneBlur()
+      if (this.phone.warnInfo) return
+      let url = '/mobileApi/user/mobileDynamicCode/get'
+      let param = {
+        'basic': {
+          'ver': '1.0',
+          'id': 1,
+          'time': 68954852668844,
+          'nonce': 4758444447744741,
+          'token': 'qsdfwaxzgfthfyrty',
+          'sign': 'jdfjdikerkfdkrid'
+        },
+        'data': {
+          'mobile': '15827265504'
+        }
+      }
+      this.$http.post(url, param).then(res => {
+        console.log(res.data)
+        this.$message({
+          type: 'success',
+          message: '已发送验证码，请注意查收手机短信'
+        })
+        this.$refs.sendSmsBtn.action()
+      })
+    },
+
+    /*
+     * 点击注册按钮时触发
      */
     handleRegister () {
+      // 先验证
+      this.phoneBlur()
+      this.verifyCodeBlur()
+      this.passwordBlur()
+      this.pwdAgainBlur()
+      if (this.phone.warnInfo || this.verifyCode.warnInfo || this.password.warnInfo || this.pwdAgain.warnInfo) return
       this.isRegistering = true
       this.registerBtnTxt = '正在注册...'
       setTimeout(() => {
+        this.$router.push('/config/userInfoCfg')
         this.isRegistering = false
         this.registerBtnTxt = '注册'
-        // this.$router.push('Home')
       }, 2000)
-      this.userWarn = !this.userWarn
-      this.pwdWarn = !this.pwdWarn
     }
   }
 }
@@ -98,7 +282,7 @@ export default {
         transform: scale(1.2);
     }
 }
-.login-bg {
+.register-bg {
     display: inline-block;
     position: absolute;
     width: 100%;
@@ -106,13 +290,13 @@ export default {
     animation: bgScale 60s ease-in-out infinite;
 }
 .register-wrap {
-    padding: 15px 40px;
+    padding: 15px 40px 25px 40px;
     width: 500px;
     overflow: hidden;
     min-height: 500px;
     position: absolute;
     z-index: 999;
-    top: 50%;
+    top: 45%;
     left: 50%;
     margin-left: -250px;
     margin-top: -250px;
@@ -120,22 +304,23 @@ export default {
     border: 1px solid #555
 }
 .register-title {
-    font-size: 22px;
-}
-.register-title h3 {
+    font-size: 26px;
     font-weight: 400;
 }
 .register-main {
     margin-top: 20px;
 }
 .input-item {
-    margin-top: 35px;
+    margin-top: 30px;
     position: relative;
+}
+.pwd.input-item {
+    margin-top: 45px;
 }
 .username {
     margin-top: 20px;
 }
-.forgetPwd, .registerLink {
+.forgetPwd, .linkToLogin {
     color: #409eff;
 }
 .forgetPwd {
@@ -143,20 +328,26 @@ export default {
     top: 10px;
     right: 15px;
 }
-.register {
+.toLoginPage-wrap {
     text-align: right;
     margin: 5px 0 0 0;
 }
 .forgetPwd:hover,
-.registerLink:hover {
+.linkToLogin:hover {
     text-decoration: underline;
     cursor: pointer;
 }
 .warn {
     color: #fc5b5b;
     position: absolute;
-    bottom: -16px;
-    left: 5px;
+    bottom: -18px;
+}
+.el-icon-success {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    z-index: 99;
+    color: #84c564;
 }
 .info {
     color: #aaa;
@@ -202,7 +393,7 @@ export default {
     display: inline-block;
     margin: 0 auto;
 }
-.phoneRegister .username .el-input {
+.phoneRegister .verifyCode .el-input {
     width: 280px;
     vertical-align: top;
 }

@@ -3,7 +3,7 @@
       <div id="home-header">
         <div class="home-head-in mc">
             <router-link to="/home" class="home-logo fl">
-              <img src="../../static/logo-cc.png" class="home-logo-img">
+              <img src="../../../static/logo-cc.png" class="home-logo-img">
             </router-link>
             <Nav class="home-nav fl"></Nav>
             <!-- 语言切换功能 -->
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import Nav from './Navigation/Navigation.vue'
+import Nav from '../Navigation/Navigation.vue'
 export default {
   name: 'Home',
   components: {
